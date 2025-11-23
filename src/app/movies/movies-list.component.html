@@ -1,0 +1,28 @@
+<div class="movies-list">
+  <h1>Películas</h1>
+
+  <div class="filtros">
+    <label for="selectTipo">Ver:</label>
+    <select id="selectTipo" [(ngModel)]="selectedType" (change)="fetchMovies()">
+      <option value="popular">Popular</option>
+      <option value="top_rated">Top Rated</option>
+      <option value="upcoming">Upcoming</option>
+    </select>
+  </div>
+
+  <div *ngIf="loading">Cargando películas...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="grid" *ngIf="movies.length > 0 && !loading">
+    <div *ngFor="let movie of movies" class="card">
+      <a [routerLink]="['/movies', movie.id]">
+        <img [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w300' + movie.poster_path : 'https://via.placeholder.com/300x450?text=Sin+imagen'" [alt]="movie.title || movie.name" />
+      </a>
+      <div class="info">
+        <h3><a [routerLink]="['/movies', movie.id]">{{ movie.title || movie.name }}</a></h3>
+        <p class="sub">{{ movie.release_date || movie.first_air_date }}</p>
+        <p class="rating">⭐ {{ movie.vote_average || 0 }}</p>
+      </div>
+    </div>
+  </div>
+</div>

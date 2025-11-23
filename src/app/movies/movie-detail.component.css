@@ -1,0 +1,3 @@
+.detalle .meta { display:flex; gap:12px; }
+.detalle img { width:200px; border-radius:6px; }
+.detalle .info { max-width:760px; }

@@ -1,0 +1,24 @@
+<div class="search-page">
+  <h1>Buscar</h1>
+  <div class="controls">
+    <input type="text" [(ngModel)]="query" placeholder="Buscar películas o series de TV" />
+    <select [(ngModel)]="type">
+      <option value="movie">Movies</option>
+      <option value="tv">TV Series</option>
+    </select>
+    <button (click)="search()">Buscar</button>
+  </div>
+
+  <div *ngIf="loading">Buscando...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="grid" *ngIf="results.length > 0 && !loading">
+    <div *ngFor="let r of results" class="result-card">
+      <img [src]="r.poster_path ? 'https://image.tmdb.org/t/p/w200' + r.poster_path : (r.profile_path ? 'https://image.tmdb.org/t/p/w200' + r.profile_path : 'https://via.placeholder.com/200x300?text=No+Image')" />
+      <div class="info">
+        <h3>{{ r.title || r.name }}</h3>
+        <p>{{ r.overview || r.known_for_department }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+.person-detail .meta { display:flex; gap:12px; }
+.person-detail img { width:200px; border-radius:6px; }
+.person-detail .info { max-width:760px; }

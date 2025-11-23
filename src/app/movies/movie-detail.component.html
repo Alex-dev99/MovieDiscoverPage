@@ -1,0 +1,31 @@
+<div *ngIf="loading">Cargando película...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="movie && !loading" class="detalle">
+  <h1>{{ movie.title }}</h1>
+  <div class="meta">
+    <img [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w300' + movie.poster_path : 'https://via.placeholder.com/300x450?text=Sin+imagen'" alt="{{ movie.title }}" />
+    <div class="info">
+      <p><strong>Estreno:</strong> {{ movie.release_date }}</p>
+      <p><strong>Puntuación:</strong> {{ movie.vote_average }}</p>
+      <h3>Sinopsis</h3>
+      <p>{{ movie.overview }}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading">Cargando detalle...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="movie && !loading" class="detalle">
+  <h1>{{ movie.title }}</h1>
+  <div class="meta">
+    <img [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w300' + movie.poster_path : 'https://via.placeholder.com/300x450?text=No+Image'" alt="{{ movie.title }}" />
+    <div class="info">
+      <p><strong>Release:</strong> {{ movie.release_date }}</p>
+      <p><strong>Runtime:</strong> {{ movie.runtime }} min</p>
+      <p><strong>Rating:</strong> ⭐ {{ movie.vote_average }}</p>
+      <h3>Overview</h3>
+      <p>{{ movie.overview }}</p>
+    </div>
+  </div>
+</div>

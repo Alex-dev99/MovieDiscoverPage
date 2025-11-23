@@ -1,0 +1,46 @@
+<div class="contenedor-descubrir-peliculas">
+  <h1>Descubrir Películas</h1>
+
+  <div class="selector-genero">
+    <label for="selectGenero">Elige un género:</label>
+    <select 
+      id="selectGenero" 
+      [(ngModel)]="generoSeleccionadoId" 
+      (change)="cuandoCambiaGenero()"
+      class="select-estilo">
+      <option value="0">-- Selecciona un género --</option>
+      <option *ngFor="let genero of generos" [value]="genero.id">
+        {{ genero.name }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="cargando" class="cargando">
+    <p>Cargando películas...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="peliculas.length > 0 && !cargando" class="grid-peliculas">
+    <div *ngFor="let pelicula of peliculas" class="tarjeta-pelicula">
+      <img 
+        [src]="obtenerUrlPoster(pelicula.poster_path)" 
+        [alt]="pelicula.title"
+        class="poster-pelicula">
+      <div class="info-pelicula">
+        <h3 class="titulo-pelicula">{{ pelicula.title }}</h3>
+        <p class="año-pelicula">{{ pelicula.release_date | date:'yyyy' }}</p>
+        <p class="puntuacion-pelicula">
+          ⭐ {{ pelicula.vote_average.toFixed(1) }}
+        </p>
+        <p class="descripcion-pelicula">{{ pelicula.overview }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="generoSeleccionadoId === 0 && !cargando" class="sin-seleccion">
+    <p>Selecciona un género para ver las películas</p>
+  </div>
+</div>

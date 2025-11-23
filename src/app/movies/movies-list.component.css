@@ -1,0 +1,9 @@
+.movies-list { }
+.filtros { margin-bottom: 12px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
+.card { background:#fff; border-radius:6px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+.card img { width:100%; display:block; }
+.info { padding:8px; }
+.info h3 { margin:0 0 6px 0; font-size:14px; }
+.sub { color:#666; font-size:12px; margin:0; }
+.rating { font-weight:700; margin-top:6px; }

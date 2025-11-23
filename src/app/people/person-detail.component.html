@@ -1,0 +1,15 @@
+<div *ngIf="loading">Cargando actor...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="person && !loading" class="person-detail">
+  <h1>{{ person.name }}</h1>
+  <div class="meta">
+    <img [src]="person.profile_path ? 'https://image.tmdb.org/t/p/w300' + person.profile_path : 'https://via.placeholder.com/300x450?text=Sin+imagen'" alt="{{ person.name }}" />
+    <div class="info">
+      <p><strong>Fecha de nacimiento:</strong> {{ person.birthday }}</p>
+      <p><strong>Lugar de nacimiento:</strong> {{ person.place_of_birth }}</p>
+      <h3>Biografía</h3>
+      <p>{{ person.biography }}</p>
+    </div>
+  </div>
+</div>

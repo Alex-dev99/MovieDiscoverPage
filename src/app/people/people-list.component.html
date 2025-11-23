@@ -1,0 +1,16 @@
+<div>
+  <h1>Actores</h1>
+  <div *ngIf="loading">Cargando actores...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="grid" *ngIf="people.length > 0 && !loading">
+    <div *ngFor="let p of people" class="person-card">
+      <a [routerLink]="['/people', p.id]">
+        <img [src]="p.profile_path ? 'https://image.tmdb.org/t/p/w300' + p.profile_path : 'https://via.placeholder.com/300x450?text=Sin+imagen'" [alt]="p.name" />
+      </a>
+      <div class="info">
+        <h3><a [routerLink]="['/people', p.id]">{{ p.name }}</a></h3>
+      </div>
+    </div>
+  </div>
+</div>
